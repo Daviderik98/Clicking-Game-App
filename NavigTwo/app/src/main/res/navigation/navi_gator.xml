@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_gator"
+    app:startDestination="@id/blankOne">
+    <fragment
+        android:id="@+id/blankOne"
+        android:name="com.example.navigtwo.BlankOne"
+        android:label="fragment_blank_one"
+        tools:layout="@layout/fragment_blank_one" >
+        <action
+            android:id="@+id/action_blankOne_to_blankTwo"
+            app:destination="@id/blankTwo" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankTwo"
+        android:name="com.example.navigtwo.BlankTwo"
+        android:label="fragment_blank_two"
+        tools:layout="@layout/fragment_blank_two" >
+        <action
+            android:id="@+id/action_blankTwo_to_blankThree"
+            app:destination="@id/blankThree" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankThree"
+        android:name="com.example.navigtwo.BlankThree"
+        android:label="fragment_blank_three"
+        tools:layout="@layout/fragment_blank_three" >
+        <action
+            android:id="@+id/action_blankThree_to_blankFour"
+            app:destination="@id/blankFour" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFour"
+        android:name="com.example.navigtwo.BlankFour"
+        android:label="fragment_blank_four"
+        tools:layout="@layout/fragment_blank_four" >
+        <action
+            android:id="@+id/action_blankFour_to_blankFive"
+            app:destination="@id/blankFive" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFive"
+        android:name="com.example.navigtwo.BlankFive"
+        android:label="fragment_blank_five"
+        tools:layout="@layout/fragment_blank_five" >
+        <action
+            android:id="@+id/action_blankFive_to_blankOne"
+            app:destination="@id/blankOne" />
+    </fragment>
+</navigation>
