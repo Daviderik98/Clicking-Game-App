@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-
-
+import com.example.navigtwo.Counter.SharedViewModel
 
 
 class BlankOne : Fragment() {
@@ -24,13 +24,20 @@ class BlankOne : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val sharedViewOne: SharedViewModel by viewModels()
         // Inflate the layout for this fragment
         val firstView = inflater.inflate(R.layout.fragment_blank_one, container, false)
+
+        firstView.setOnClickListener{
+            sharedViewOne.deCrease()
+        }
 
         val batMan: Button = firstView.findViewById(R.id.buttonOne)
         batMan.isVisible = true // going to manipulate this soon with : if(otherText != ""){ false}
 
         batMan.setOnClickListener{
+            sharedViewOne.inCrease()
             Navigation.findNavController(firstView).navigate(R.id.action_blankOne_to_blankTwo)
         }
 
