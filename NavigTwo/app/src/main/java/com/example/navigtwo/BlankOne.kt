@@ -34,11 +34,14 @@ class BlankOne : Fragment() {
         }
 
         val batMan: Button = firstView.findViewById(R.id.buttonOne)
-        batMan.isVisible = true // going to manipulate this soon with : if(otherText != ""){ false}
+            batMan.isVisible = true
 
         batMan.setOnClickListener{
-            sharedViewOne.inCrease()
-            Navigation.findNavController(firstView).navigate(R.id.action_blankOne_to_blankTwo)
+            if(sharedViewOne.isClickable){
+                sharedViewOne.inCrease()
+                Navigation.findNavController(firstView).navigate(R.id.action_blankOne_to_blankTwo)
+            }
+
         }
 
         return firstView

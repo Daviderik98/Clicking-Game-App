@@ -26,7 +26,7 @@ class FunctionalityActivity : AppCompatActivity() {
 
 
                                                   //Change Activity later, David
-        val finisher = Intent(this, MainActivity::class.java)
+        val finisher = Intent(this, NextUpActivity::class.java)
 
         val txtView: TextView = findViewById(R.id.textViewOne)
         val otherText: TextView = findViewById(R.id.textView2)
@@ -34,6 +34,7 @@ class FunctionalityActivity : AppCompatActivity() {
         var countdownValue: Int = 10
 
         val scoreView: TextView = findViewById(R.id.viewForScores)
+        val actualScore: String = sharedVM.currentState.value.currentScore.toString()
 
         scoreView.isVisible = false
 
@@ -44,7 +45,7 @@ class FunctionalityActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 sharedVM.currentState.collect(){
                     //Update UI elements
-                    scoreView.text = sharedVM.currentState.value.currentScore.toString()
+                    scoreView.text = "Score : $actualScore"
                 }
             }
         }
@@ -61,6 +62,7 @@ class FunctionalityActivity : AppCompatActivity() {
             }
             override fun onFinish() {
                 println(scoreView.text.toString())
+                println(actualScore)
                 //txtView.text = "Done!"
                 //downcount.isVisible = true
                 //otherText.text = "When you click to start the timer, you will have to click on as many buttons as possible"
@@ -69,6 +71,7 @@ class FunctionalityActivity : AppCompatActivity() {
         }
 
         downcount.setOnClickListener{
+            sharedVM.isClickable = true
             otherText.text = ""
             countdownValue = 11
           timing.start()
