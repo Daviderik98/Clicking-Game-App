@@ -26,7 +26,7 @@ class FunctionalityActivity : AppCompatActivity() {
 
 
                                                   //Change Activity later, David
-        val finisher = Intent(this, NextUpActivity::class.java)
+        val finisher = Intent(this, MemoryActivity::class.java)
 
         val txtView: TextView = findViewById(R.id.textViewOne)
         val otherText: TextView = findViewById(R.id.textView2)
@@ -40,15 +40,7 @@ class FunctionalityActivity : AppCompatActivity() {
 
 
 
-        //ViewModel LifeCycle
-        lifecycleScope.launch{
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                sharedVM.currentState.collect(){
-                    //Update UI elements
-                    scoreView.text = "Score : $actualScore"
-                }
-            }
-        }
+
 
 
 
@@ -67,6 +59,16 @@ class FunctionalityActivity : AppCompatActivity() {
                 //downcount.isVisible = true
                 //otherText.text = "When you click to start the timer, you will have to click on as many buttons as possible"
                 startActivity(finisher)
+            }
+        }
+
+        //ViewModel LifeCycle
+        lifecycleScope.launch{
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                sharedVM.currentState.collect(){
+                    //Update UI elements
+                    scoreView.text = "Score : $actualScore"
+                }
             }
         }
 
