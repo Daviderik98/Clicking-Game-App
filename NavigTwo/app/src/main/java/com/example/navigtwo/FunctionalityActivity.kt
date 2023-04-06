@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 
 import android.content.Intent
 import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -22,7 +23,20 @@ class FunctionalityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_functionality)
 
+        val showPoints: TextView = findViewById(R.id.showPoints)
+
         val sharedVM: SharedViewModel by viewModels()
+
+        //ViewModel LifeCycle
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                sharedVM.currentState.collect() {
+                    //Update UI elements
+                    showPoints.text = sharedVM.currentState.value.currentScore.toString()
+
+                }
+            }
+        }
 
 
                                                   //Change Activity later, David
@@ -34,9 +48,11 @@ class FunctionalityActivity : AppCompatActivity() {
         var countdownValue: Int = 10
 
         val scoreView: TextView = findViewById(R.id.viewForScores)
-        val actualScore: String = sharedVM.currentState.value.currentScore.toString()
+
+
 
         scoreView.isVisible = false
+        showPoints.isVisible = false
 
 
 
@@ -50,11 +66,14 @@ class FunctionalityActivity : AppCompatActivity() {
                 countdownValue--
                 downcount.isVisible = false
                  scoreView.isVisible = true
+                 showPoints.isVisible = true
+                 sharedVM.isClickable = true
                 txtView.text = countdownValue.toString()
             }
             override fun onFinish() {
                 println(scoreView.text.toString())
-                println(actualScore)
+                println(showPoints.text.toString())
+                sharedVM.keepScore(showPoints.text.toString())
                 //txtView.text = "Done!"
                 //downcount.isVisible = true
                 //otherText.text = "When you click to start the timer, you will have to click on as many buttons as possible"
@@ -62,18 +81,10 @@ class FunctionalityActivity : AppCompatActivity() {
             }
         }
 
-        //ViewModel LifeCycle
-        lifecycleScope.launch{
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                sharedVM.currentState.collect(){
-                    //Update UI elements
-                    scoreView.text = "Score : $actualScore"
-                }
-            }
-        }
+
 
         downcount.setOnClickListener{
-            sharedVM.isClickable = true
+            sharedVM.isClickable = true//redundant, so I will fix this later
             otherText.text = ""
             countdownValue = 11
           timing.start()

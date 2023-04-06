@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.navigtwo.Counter.SharedViewModel
@@ -28,7 +29,7 @@ class BlankFive : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val sharedViewFive: SharedViewModel by viewModels()
+        val sharedViewFive: SharedViewModel by activityViewModels()
         // Inflate the layout for this fragment
         val fifthView = inflater.inflate(R.layout.fragment_blank_five, container, false)
         fifthView.setOnClickListener{

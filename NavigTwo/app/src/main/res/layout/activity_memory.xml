@@ -23,17 +23,19 @@
         android:layout_marginTop="65dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textColor="#0f0fff"
+        android:text="example"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="231dp"
+        android:layout_width="251dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:text="Alright. Now you have one more chance to earn extra points. The rules are simple. Try to remember what words were on the buttons, and write down all you remember, one at a time and press on Enter. You won´t get negative points for a wrong answer. You can also skip this part, and go on to the next screen"
+        android:background="#f0f00f"
         android:textColor="@color/black"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"

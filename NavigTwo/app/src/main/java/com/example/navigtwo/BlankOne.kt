@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+
 import androidx.navigation.Navigation
 import com.example.navigtwo.Counter.SharedViewModel
 
@@ -25,7 +26,7 @@ class BlankOne : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val sharedViewOne: SharedViewModel by viewModels()
+        val sharedViewOne: SharedViewModel by activityViewModels()
         // Inflate the layout for this fragment
         val firstView = inflater.inflate(R.layout.fragment_blank_one, container, false)
 

@@ -8,11 +8,13 @@ import kotlinx.coroutines.flow.update
 
 class SharedViewModel: ViewModel() {
 
-    var isClickable: Boolean = true // Manipulate later, when it works
+    var isClickable: Boolean = false // Manipulate later, when it works
 
     //Setup mutableStateFlow
     private var _uiState = MutableStateFlow(CounterStates())
     val currentState: StateFlow<CounterStates> = _uiState.asStateFlow()
+
+
 
     fun inCrease(){
         _uiState.update{
@@ -32,6 +34,10 @@ _uiState.update{
     )
 }
         println("THIS MESSAGE IS ABOUT your revoked climbing liscence")
+    }
+
+    fun keepScore(scores: String): String{
+        return scores
     }
 
 }

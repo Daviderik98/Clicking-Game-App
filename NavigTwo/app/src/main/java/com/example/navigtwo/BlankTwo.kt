@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.navigtwo.Counter.SharedViewModel
+import androidx.fragment.app.activityViewModels
 
 
 /**
@@ -28,7 +29,7 @@ class BlankTwo : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val sharedViewTwo: SharedViewModel by viewModels()
+        val sharedViewTwo: SharedViewModel by activityViewModels()
         // Inflate the layout for this fragment
         val secondView = inflater.inflate(R.layout.fragment_blank_two, container, false)
 
