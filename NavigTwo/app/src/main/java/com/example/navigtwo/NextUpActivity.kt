@@ -22,21 +22,33 @@ class NextUpActivity : AppCompatActivity() {
         val scoreText: String = sharedVMthree.currentState.value.currentScore.toString()
         showScore.text = "And your score : $scoreText"
 
-        val towardsLast = Intent(this, RegisteredActivity::class.java)
+
 
         val entered: EditText= findViewById(R.id.enterNames)
-        val enteredTxt: String = entered.toString()
+        var enteredTxt: String = entered.text.toString()
+
+
 
         val nameInsert: Button = findViewById(R.id.buttonAdder)
         nameInsert.setOnClickListener{
+            enteredTxt = entered.text.toString()
+            println("TRANSMITTING OVER : $enteredTxt")
 
             //Insert the followin code: -Navigate via Intent to next, - Snackbar with Undo option,
+            val towardsLast = Intent(this, RegisteredActivity::class.java).apply{
+                putExtra("key_playerName", enteredTxt)
+            }
             startActivity(towardsLast)
         }
 
         val standardSign: TextView = findViewById(R.id.underTEXT)
         standardSign.setOnClickListener{
-startActivity(towardsLast)
+            enteredTxt = "Player"
+            println("$enteredTxt : SIGNING OFF")
+            val toTheLastAct = Intent(this, RegisteredActivity::class.java).apply{
+                putExtra("key_playerName", "Player")
+            }
+startActivity(toTheLastAct)
         }
         //Placeholder
         //val intendBack = Intent(this, MainActivity::class.java)

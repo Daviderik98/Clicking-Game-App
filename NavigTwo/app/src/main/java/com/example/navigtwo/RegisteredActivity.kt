@@ -13,6 +13,8 @@ class RegisteredActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registered)
         val onScreen: TextView = findViewById(R.id.openParagraph)
 
+        val broughtText: String = intent.getStringExtra("key_playerName").toString()
+
 
         //Building my API link below
         val retrofit = Retrofit.Builder()
@@ -26,12 +28,16 @@ class RegisteredActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     val answer = response.body()
                     println(answer)
-                    onScreen.text = answer.toString()
+                    println(broughtText)
+                    val finalName: String = broughtText.toString()
+                    println(finalName)
+                    val fullName: String = "[$finalName]_[$answer]"
+                    onScreen.text = fullName
                 }
             }
 
             override fun onFailure(call: Call<List<String>>, t: Throwable) {
-                TODO("Not yet implemented")
+                println("UNABLE TO ACQUIRE DATA")
             }
 
         })
