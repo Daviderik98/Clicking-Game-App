@@ -10,6 +10,8 @@ class SharedViewModel: ViewModel() {
 
     var isClickable: Boolean = false // Manipulate later, when it works
 
+    var finalScore: String = ""
+
     //Setup mutableStateFlow
     private var _uiState = MutableStateFlow(CounterStates())
     val currentState: StateFlow<CounterStates> = _uiState.asStateFlow()
