@@ -12,7 +12,10 @@ class SharedViewModel: ViewModel() {
 
     var finalScore: String = ""
 
-    val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA"))
+    val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA", "SOUNDWAVES", "BLUE", "HEARTS", "REGRET", "FOLLOW", "METAL", "LIGHTS", "SMART"))
+    var indexing: Int = 0
+    // To Replace var indexing
+    fun toIndex(){}
 
     //Setup mutableStateFlow
     private var _uiState = MutableStateFlow(CounterStates())

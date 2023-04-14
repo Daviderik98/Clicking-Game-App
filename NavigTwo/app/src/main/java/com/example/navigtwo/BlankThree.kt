@@ -39,8 +39,11 @@ class BlankThree : Fragment() {
         }
 
         val fromThird: Button = thirdView.findViewById(R.id.button3)
+        fromThird.text = sharedViewThree.phraseList[sharedViewThree.indexing]
 
         fromThird.setOnClickListener{
+            //Replace with Indexing-Function
+            sharedViewThree.indexing++
             sharedViewThree.inCrease()
             Navigation.findNavController(thirdView).navigate(R.id.action_blankThree_to_blankFour)
         }
