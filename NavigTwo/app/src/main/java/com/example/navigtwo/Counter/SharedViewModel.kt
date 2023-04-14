@@ -12,6 +12,8 @@ class SharedViewModel: ViewModel() {
 
     var finalScore: String = ""
 
+    val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA"))
+
     //Setup mutableStateFlow
     private var _uiState = MutableStateFlow(CounterStates())
     val currentState: StateFlow<CounterStates> = _uiState.asStateFlow()
