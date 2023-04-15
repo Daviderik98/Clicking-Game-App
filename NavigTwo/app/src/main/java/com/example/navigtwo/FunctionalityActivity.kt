@@ -73,7 +73,7 @@ class FunctionalityActivity : AppCompatActivity() {
             override fun onFinish() {
                 println(scoreView.text.toString())
                 println(showPoints.text.toString())
-                sharedVM.keepScore(showPoints.text.toString())
+
                 //txtView.text = "Done!"
                 //downcount.isVisible = true
                 //otherText.text = "When you click to start the timer, you will have to click on as many buttons as possible"

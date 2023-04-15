@@ -15,13 +15,13 @@ class SharedViewModel: ViewModel() {
     var isClickable: Boolean = false // Manipulate later, when it works
 
     var finalScoreOne: String = ""
-    var finalScoreTwo: String = ""
+    //var finalScoreTwo: Int = 0
 
     val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA", "SOUNDWAVES", "BLUE", "HEARTS", "REGRET", "FOLLOW", "METAL", "LIGHTS", "SMART"))
-
+    val maxIndex: Int = phraseList.size - 1
     // To Replace var indexing
     fun toIndex(): Int {
-        var myRand: Int = (0..phraseList.size).random()
+        var myRand: Int = (0..maxIndex).random()
         return myRand
     }
 
@@ -51,8 +51,21 @@ _uiState.update{
         println("THIS MESSAGE IS ABOUT your revoked climbing liscence")
     }
 
-    fun keepScore(scores: String): String{
-        return scores
+    //For Memory-Game
+    fun secondIncrease(){//Need to modify this 
+        _uiState.update{
+            state -> state.copy(
+            currentScore = state.currentScore + 9
+            )
+        }
+    }
+
+    fun toCorrect(inPut: String){
+        for(i in 0..maxIndex)
+            if(phraseList[i] == inPut){
+                secondIncrease()
+            }
+
     }
 
 }
