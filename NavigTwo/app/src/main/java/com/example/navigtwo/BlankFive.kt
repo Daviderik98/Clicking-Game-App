@@ -37,11 +37,11 @@ class BlankFive : Fragment() {
         }
 
         val fromFiveBack: Button = fifthView.findViewById(R.id.button5)
-        fromFiveBack.text = sharedViewFive.phraseList[sharedViewFive.indexing]
+        fromFiveBack.text = sharedViewFive.phraseList[sharedViewFive.toIndex()]
 
         fromFiveBack.setOnClickListener{
             //Replace with Indexing Function
-            sharedViewFive.indexing++
+
             sharedViewFive.inCrease()
             Navigation.findNavController(fifthView).navigate(R.id.action_blankFive_to_blankOne)
         }

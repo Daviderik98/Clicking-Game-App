@@ -38,11 +38,10 @@ class BlankTwo : Fragment() {
         }
 
         val fromTwo: Button = secondView.findViewById(R.id.button2)
-        fromTwo.text = sharedViewTwo.phraseList[sharedViewTwo.indexing]
+        fromTwo.text = sharedViewTwo.phraseList[sharedViewTwo.toIndex()]
 
         fromTwo.setOnClickListener{
             //Replace with Indexing-Function
-            sharedViewTwo.indexing++
             sharedViewTwo.inCrease()
             Navigation.findNavController(secondView).navigate(R.id.action_blankTwo_to_blankThree)
         }

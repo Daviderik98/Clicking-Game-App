@@ -6,16 +6,24 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
+import kotlin.collections.ArrayList
+
+
+
 class SharedViewModel: ViewModel() {
 
     var isClickable: Boolean = false // Manipulate later, when it works
 
-    var finalScore: String = ""
+    var finalScoreOne: String = ""
+    var finalScoreTwo: String = ""
 
     val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA", "SOUNDWAVES", "BLUE", "HEARTS", "REGRET", "FOLLOW", "METAL", "LIGHTS", "SMART"))
-    var indexing: Int = 0
+
     // To Replace var indexing
-    fun toIndex(){}
+    fun toIndex(): Int {
+        var myRand: Int = (0..phraseList.size).random()
+        return myRand
+    }
 
     //Setup mutableStateFlow
     private var _uiState = MutableStateFlow(CounterStates())

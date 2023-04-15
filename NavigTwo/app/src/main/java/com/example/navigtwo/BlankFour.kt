@@ -37,10 +37,9 @@ class BlankFour : Fragment() {
         }
 
         val fromFour: Button = fourthView.findViewById(R.id.button4)
-        fromFour.text = sharedViewFour.phraseList[sharedViewFour.indexing]
+        fromFour.text = sharedViewFour.phraseList[sharedViewFour.toIndex()]
 
         fromFour.setOnClickListener{
-            sharedViewFour.indexing++
             sharedViewFour.inCrease()
             Navigation.findNavController(fourthView).navigate(R.id.action_blankFour_to_blankFive)
         }

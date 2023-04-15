@@ -36,12 +36,11 @@ class BlankOne : Fragment() {
 
         val batMan: Button = firstView.findViewById(R.id.buttonOne)
             batMan.isVisible = true
-        batMan.text = sharedViewOne.phraseList[sharedViewOne.indexing]
+        batMan.text = sharedViewOne.phraseList[sharedViewOne.toIndex()]
 
         batMan.setOnClickListener{
             if(sharedViewOne.isClickable){
                 //Replace with Indexing-Function
-                sharedViewOne.indexing++
                 sharedViewOne.inCrease()
                 Navigation.findNavController(firstView).navigate(R.id.action_blankOne_to_blankTwo)
             }
