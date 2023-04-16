@@ -39,7 +39,7 @@ class FunctionalityActivity : AppCompatActivity() {
         }
 
 
-                                                  //Change Activity later, David
+
         val finisher = Intent(this, MemoryActivity::class.java)
 
         val txtView: TextView = findViewById(R.id.textViewOne)

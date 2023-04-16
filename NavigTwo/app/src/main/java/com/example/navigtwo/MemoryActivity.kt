@@ -32,22 +32,48 @@ class MemoryActivity : AppCompatActivity() {
         val entryOne: EditText = findViewById(R.id.editForInsertWord)
         val correctButton: Button = findViewById(R.id.btn_ForEntry)
 
+
+
         //ViewModel LifeCycle
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 sharedVMtwo.currentState.collect() {
                     //Update UI elements
-                    forMorePoints.text = sharedVMtwo.currentState.value.currentScore.toString()
+                    forMorePoints.text = sharedVMtwo.otherState.value.memoryScore.toString()
 
                 }
             }
         }
 
+        fun toCorrect(inPut: String): Int{
+            var whatFound: Int = 0
+            for(i in 0..sharedVMtwo.maxIndex) {
+                if (sharedVMtwo.phraseList[i] == inPut) {
+
+                    whatFound = 5
+                }
+            }
+                if(whatFound == 5){
+                    println("ONE WORD FOUND")
+                }
+                else{
+                    println("WE FOUND NO SUCH WORD")
+                }
+
+             return whatFound
+        }
+
         correctButton.setOnClickListener{
-            sharedVMtwo.toCorrect(entryOne.toString())
+            val userInText: String = entryOne.text.toString()
+            println(userInText)
+            val rightOrWrong: Int = toCorrect(userInText)
+            if(rightOrWrong == 5){
+                sharedVMtwo.secondIncrease()
+            }
         }
 
         toNextPage.setOnClickListener{
+            sharedVMtwo.finalScoreTwo = forMorePoints.text.toString()
             startActivity(memoriesTo)
         }
     }

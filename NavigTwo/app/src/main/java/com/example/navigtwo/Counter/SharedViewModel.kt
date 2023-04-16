@@ -15,7 +15,7 @@ class SharedViewModel: ViewModel() {
     var isClickable: Boolean = false // Manipulate later, when it works
 
     var finalScoreOne: String = ""
-    //var finalScoreTwo: Int = 0
+    var finalScoreTwo: String = ""
 
     val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA", "SOUNDWAVES", "BLUE", "HEARTS", "REGRET", "FOLLOW", "METAL", "LIGHTS", "SMART"))
     val maxIndex: Int = phraseList.size - 1
@@ -52,20 +52,18 @@ _uiState.update{
     }
 
     //For Memory-Game
+
+    private var _secondState = MutableStateFlow(SecondCounterstate())
+    var otherState: StateFlow<SecondCounterstate> = _secondState.asStateFlow()
     fun secondIncrease(){//Need to modify this 
-        _uiState.update{
+        _secondState.update{
             state -> state.copy(
-            currentScore = state.currentScore + 9
+            memoryScore = state.memoryScore + 9
             )
         }
+        println("MEMORY SCORE UPDATED + 9")
     }
 
-    fun toCorrect(inPut: String){
-        for(i in 0..maxIndex)
-            if(phraseList[i] == inPut){
-                secondIncrease()
-            }
 
-    }
 
 }
