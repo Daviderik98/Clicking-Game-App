@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/openParagraph"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="49dp"
         android:background="@color/black"
         android:text="Welcome User"
@@ -45,4 +45,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openParagraph"
         app:layout_constraintVertical_bias="0.425" />
+
+    <TextView
+        android:id="@+id/viewScoreOne"
+        android:layout_width="275dp"
+        android:layout_height="49dp"
+        android:background="@color/black"
+        android:text="Show Score One"
+        android:textAlignment="center"
+        android:textColor="#ff0"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openParagraph"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/viewScoreTwo"
+        android:layout_width="275dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="72dp"
+        android:background="@color/black"
+        android:text="Show Score Two"
+        android:textAlignment="center"
+        android:textColor="#ff0"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewScoreOne"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
