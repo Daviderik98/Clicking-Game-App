@@ -15,7 +15,7 @@ class SharedViewModel: ViewModel() {
     var isClickable: Boolean = false // Manipulate later, when it works
 
     var finalScoreOne: String = ""
-    var finalScoreTwo: String = ""
+
 
     val phraseList: ArrayList<String> = ArrayList(arrayListOf("MASSIVE", "SHADOW", "FOREST", "MOUNTAINS", "EVERLASTING", "GUARDIAN", "DIVERSITY", "WISHES", " ARCHERS", "WEAPONS", "FREEDOM", "PEACE", "UTOPIA", "WARRIOR", "SILENT", "HARMONY", "SIRENS", "SHIPWRECK", "CAVE-IN", "BEACONS", "ROADTRIP", "MANIA", "SOUNDWAVES", "BLUE", "HEARTS", "REGRET", "FOLLOW", "METAL", "LIGHTS", "SMART", "DYSTOPIA", "STRENGTH", "SOFT", "PROTECT", "HURT"))
     val maxIndex: Int = phraseList.size - 1
@@ -50,20 +50,5 @@ _uiState.update{
 }
         println("THIS MESSAGE IS ABOUT your revoked climbing liscence")
     }
-
-    //For Memory-Game
-
-    private var _secondState = MutableStateFlow(SecondCounterstate())
-    var otherState: StateFlow<SecondCounterstate> = _secondState.asStateFlow()
-    fun secondIncrease(){//Need to modify this 
-        _secondState.update{
-            state -> state.copy(
-            memoryScore = state.memoryScore + 9
-            )
-        }
-        println("MEMORY SCORE UPDATED + 9")
-    }
-
-
 
 }

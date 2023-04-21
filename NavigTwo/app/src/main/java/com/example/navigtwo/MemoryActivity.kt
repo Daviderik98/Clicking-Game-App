@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.navigtwo.Counter.SecondSharedModel
 import com.example.navigtwo.Counter.SharedViewModel
 import kotlinx.coroutines.launch
 
@@ -19,10 +20,10 @@ class MemoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val sharedVMtwo = ViewModelProvider(this).get(SharedViewModel::class.java)
+
+        val secondSharedVM = ViewModelProvider(this).get(SecondSharedModel::class.java)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
-
-        println(sharedVMtwo.finalScoreOne)
 
 
 
@@ -38,9 +39,9 @@ class MemoryActivity : AppCompatActivity() {
         //ViewModel LifeCycle
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                sharedVMtwo.currentState.collect() {
+                secondSharedVM.currentMemory.collect() {
                     //Update UI elements
-                    forMorePoints.text = sharedVMtwo.otherState.value.memoryScore.toString()
+                    forMorePoints.text = secondSharedVM.currentMemory.value.memoryScore.toString()
 
                 }
             }
@@ -87,14 +88,14 @@ class MemoryActivity : AppCompatActivity() {
             //Only printed out to test it : println(userInText)
             val rightOrWrong: Int = toCorrect(userInText)
             if(rightOrWrong == 5){
-                sharedVMtwo.secondIncrease()
+                secondSharedVM.secondIncrease()
             }
             answers.add(userInText)
         }
 
         toNextPage.setOnClickListener{
-            sharedVMtwo.finalScoreTwo = forMorePoints.text.toString()
-            println("Final Score of Memory Game = ${sharedVMtwo.finalScoreTwo}")
+            secondSharedVM.finalScoreTwo = forMorePoints.text.toString()
+            println("Final Score of Memory Game = ${secondSharedVM.finalScoreTwo}")
             startActivity(memoriesTo)
         }
     }

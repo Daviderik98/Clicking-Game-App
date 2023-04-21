@@ -36,7 +36,12 @@ class BlankOne : Fragment() {
 
         val batMan: Button = firstView.findViewById(R.id.buttonOne)
             batMan.isVisible = true
-        batMan.text = sharedViewOne.phraseList[sharedViewOne.toIndex()]
+
+
+            batMan.text = sharedViewOne.phraseList[sharedViewOne.toIndex()]
+
+
+
 
         batMan.setOnClickListener{
             if(sharedViewOne.isClickable){
