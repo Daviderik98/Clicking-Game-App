@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.update
 
 class SecondSharedModel: ViewModel() {
 
-    var finalScoreTwo: String = ""
+
 
     private val _memoryState = MutableStateFlow(SecondCounterstate())
     val currentMemory = _memoryState.asStateFlow()

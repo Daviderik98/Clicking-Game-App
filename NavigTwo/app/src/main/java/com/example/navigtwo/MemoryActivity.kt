@@ -25,7 +25,11 @@ class MemoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
 
+        var finalScoreTwo: String = "Noneofmybusy"
 
+        val fromFirstGM: String = intent.getStringExtra("first_Score").toString()
+        val showPrevious: TextView = findViewById(R.id.previousPoints)
+        showPrevious.text = fromFirstGM
 
         val memoriesTo = Intent(this, NextUpActivity::class.java)
         val toNextPage: Button = findViewById(R.id.btn_NextPage)
@@ -94,8 +98,10 @@ class MemoryActivity : AppCompatActivity() {
         }
 
         toNextPage.setOnClickListener{
-            secondSharedVM.finalScoreTwo = forMorePoints.text.toString()
-            println("Final Score of Memory Game = ${secondSharedVM.finalScoreTwo}")
+            finalScoreTwo = forMorePoints.text.toString()
+            println("Final Score of Memory Game = $finalScoreTwo")
+            memoriesTo.putExtra("Score_from_Two", finalScoreTwo)
+            memoriesTo.putExtra("Score_from_One",fromFirstGM)
             startActivity(memoriesTo)
         }
     }

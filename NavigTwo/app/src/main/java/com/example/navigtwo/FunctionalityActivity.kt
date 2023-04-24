@@ -38,7 +38,7 @@ class FunctionalityActivity : AppCompatActivity() {
             }
         }
 
-
+        var finalScoreOne: String = "Fascinating"
 
         val finisher = Intent(this, MemoryActivity::class.java)
 
@@ -77,9 +77,10 @@ class FunctionalityActivity : AppCompatActivity() {
                 //txtView.text = "Done!"
                 //downcount.isVisible = true
                 //otherText.text = "When you click to start the timer, you will have to click on as many buttons as possible"
-                sharedVM.finalScoreOne = showPoints.text.toString()
+                finalScoreOne = showPoints.text.toString()
 
-                println("Presenting : ${sharedVM.finalScoreOne}")
+                println("Presenting : $finalScoreOne")
+                finisher.putExtra("first_Score", finalScoreOne)
                 startActivity(finisher)
             }
         }

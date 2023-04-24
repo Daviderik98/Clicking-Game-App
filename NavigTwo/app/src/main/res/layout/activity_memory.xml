@@ -85,4 +85,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.973" />
+
+    <TextView
+        android:id="@+id/previously"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Previous Score: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973" />
+
+    <TextView
+        android:id="@+id/previousPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/previously"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973" />
 </androidx.constraintlayout.widget.ConstraintLayout>

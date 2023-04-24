@@ -8,19 +8,26 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.navigtwo.Counter.SecondSharedModel
 import com.example.navigtwo.Counter.SharedViewModel
 
 
 class NextUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_next_up)
 
-        val sharedVMthree: SharedViewModel by viewModels()
+        val scoreFromFirst: String = intent.getStringExtra("Score_from_One").toString()
+        val scoreFromSecond: String = intent.getStringExtra("Score_from_Two").toString()
+
 
         val showScore: TextView = findViewById(R.id.textView4)
-        val scoreText: String = sharedVMthree.currentState.value.currentScore.toString()
-        showScore.text = "And your score : $scoreText"
+        //val firstPoint: String = sharedVMthree.finalScoreOne
+        //val scoreText: String = firstPoint
+        showScore.text = "And your scores are : $scoreFromFirst , $scoreFromSecond"
 
 
 
@@ -37,6 +44,8 @@ class NextUpActivity : AppCompatActivity() {
             //Insert the followin code: -Navigate via Intent to next, - Snackbar with Undo option,
             val towardsLast = Intent(this, RegisteredActivity::class.java).apply{
                 putExtra("key_playerName", enteredTxt)
+                putExtra("GameScore_One", scoreFromFirst)
+                putExtra("GameScore_Two", scoreFromSecond)
             }
             startActivity(towardsLast)
         }
@@ -47,6 +56,8 @@ class NextUpActivity : AppCompatActivity() {
             println("$enteredTxt : SIGNING OFF")
             val toTheLastAct = Intent(this, RegisteredActivity::class.java).apply{
                 putExtra("key_playerName", "Player")
+                putExtra("GameScore_One", scoreFromFirst)
+                putExtra("GameScore_Two", scoreFromSecond)
             }
 startActivity(toTheLastAct)
         }

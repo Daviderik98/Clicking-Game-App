@@ -2,34 +2,44 @@ package com.example.navigtwo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.navigtwo.API_part.WordApi
 import com.example.navigtwo.Counter.SecondSharedModel
 import com.example.navigtwo.Counter.SharedViewModel
+import com.example.navigtwo.database_Part.User
+import com.example.navigtwo.database_Part.UserDataBase
+import com.example.navigtwo.database_Part.UserRepository
+import kotlinx.coroutines.Dispatchers
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RegisteredActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {    // Where I use my API
 
-        val sharedVMFour = ViewModelProvider(this).get(SharedViewModel::class.java)
-        val otherSharedVM = ViewModelProvider(this).get(SecondSharedModel::class.java)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registered)
+
+        val db = UserDataBase.getDatabase(applicationContext)
+        val usersRepo = UserRepository(db, lifecycleScope)
+
         val onScreen: TextView = findViewById(R.id.openParagraph)
 
-        println("First Game Score = ${sharedVMFour.finalScoreOne}")
-        println("Second Game Score = ${otherSharedVM.finalScoreTwo}")
 
         val broughtText: String = intent.getStringExtra("key_playerName").toString()
-
+        val showFirstScore: String = intent.getStringExtra("GameScore_One").toString()
+        val showSecondScore: String = intent.getStringExtra("GameScore_Two").toString()
+        println("First Game Score = ")
+        println("Second Game Score = ")
         //Printing out the Scores
         val firstPoints: TextView = findViewById(R.id.viewScoreOne)
-        firstPoints.text = "INSERT FIRST"
+        firstPoints.text = "Clicking Game : $showFirstScore"
         val secondPoints: TextView = findViewById(R.id.viewScoreTwo)
-        secondPoints.text = "INSERT SECOND"
+        secondPoints.text = "Memory Game : $showSecondScore"
+
+        var fullName: String = "Insert_Here"
 
 
         //Building my API link below
@@ -47,7 +57,7 @@ class RegisteredActivity : AppCompatActivity() {
                     println(broughtText)
                     val finalName: String = broughtText.toString()
                     println(finalName)
-                    val fullName: String = "[$finalName]_[$answer]"
+                    fullName = "[$finalName]_[$answer]"
                     onScreen.text = fullName
                 }
             }
@@ -56,8 +66,17 @@ class RegisteredActivity : AppCompatActivity() {
                 println("UNABLE TO ACQUIRE DATA")
             }
 
+
+
         })
 
+        val toRegister: Button = findViewById(R.id.btn_Registration)
+toRegister.setOnClickListener{
+    usersRepo.performDatabaseOperation(Dispatchers.IO){
+        usersRepo.addOneUser(User(fullName, showFirstScore, showSecondScore))
+        println("$fullName , $showFirstScore , $showSecondScore")
+    }
+}
 
     }
 }
