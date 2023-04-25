@@ -23,10 +23,10 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="257dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:textColor="@color/purple_700"
-        android:text="Thank you for playing! Your username for this session is shown in the Black Box. Now you have one last choice, to save your record to the Database."
+        android:text="Thank you for playing! Your username for this session is shown in the Black Box, as well as your Game scores. Now you have one last choice, to save your record to the Database, or not. You can also get a view of all players in the database so far. Otherwise, press the Red button to restart."
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/openParagraph"
@@ -76,4 +76,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewScoreOne"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/Return_to_Start"
+        android:layout_width="65dp"
+        android:layout_height="37dp"
+        android:backgroundTint="#f00"
+        android:text="Back"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
+
+    <Button
+        android:id="@+id/toDataBase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#f00f"
+        android:text="View Database"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Registration" />
 </androidx.constraintlayout.widget.ConstraintLayout>

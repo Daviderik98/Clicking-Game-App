@@ -1,5 +1,6 @@
 package com.example.navigtwo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -27,7 +28,21 @@ class RegisteredActivity : AppCompatActivity() {
 
         val onScreen: TextView = findViewById(R.id.openParagraph)
 
+        //For Restart
+        val restartGame: Button = findViewById(R.id.Return_to_Start)
+        val restartCommand = Intent(this, MainActivity::class.java)
+        restartGame.setOnClickListener{
+            startActivity(restartCommand)
+        }
 
+        //For Viewing the Database-Content
+        val toTheDB: Button = findViewById(R.id.toDataBase)
+        val viewDB = Intent(this, DBViewActivity::class.java)
+        toTheDB.setOnClickListener{
+            startActivity(viewDB)
+        }
+
+        //Variables for printing out on TextViews
         val broughtText: String = intent.getStringExtra("key_playerName").toString()
         val showFirstScore: String = intent.getStringExtra("GameScore_One").toString()
         val showSecondScore: String = intent.getStringExtra("GameScore_Two").toString()
@@ -54,8 +69,7 @@ class RegisteredActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     val answer = response.body()
                     println(answer)
-                    println(broughtText)
-                    val finalName: String = broughtText.toString()
+                    val finalName: String = broughtText
                     println(finalName)
                     fullName = "[$finalName]_[$answer]"
                     onScreen.text = fullName
@@ -70,6 +84,7 @@ class RegisteredActivity : AppCompatActivity() {
 
         })
 
+        //First Interaction with Room DB
         val toRegister: Button = findViewById(R.id.btn_Registration)
 toRegister.setOnClickListener{
     usersRepo.performDatabaseOperation(Dispatchers.IO){
