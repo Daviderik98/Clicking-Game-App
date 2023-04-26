@@ -49,7 +49,7 @@ class BlankOne : Fragment() {
                 sharedViewOne.inCrease()
                 Navigation.findNavController(firstView).navigate(R.id.action_blankOne_to_blankTwo)
             }
-
+            //Navigation.findNavController(firstView).navigate(R.id.action_blankOne_to_blankTwo)
         }
 
         return firstView
