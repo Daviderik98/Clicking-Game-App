@@ -8,73 +8,72 @@
 
     <TextView
         android:id="@+id/openingText"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="#f0f00f"
         android:text="Alright Player. Now you are almost done. Just type in your name and you will get the chance to be registered in our list of playerscores. "
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.137" />
 
     <EditText
         android:id="@+id/enterNames"
         android:layout_width="wrap_content"
-        android:layout_height="51dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="2dp"
         android:background="@color/teal_200"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         android:textColor="@color/purple_700"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/openingText" />
+        app:layout_constraintEnd_toEndOf="@+id/openingText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/openingText"
+        app:layout_constraintTop_toBottomOf="@+id/openingText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonAdder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="22dp"
         android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterNames"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintEnd_toEndOf="@+id/enterNames"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/enterNames"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="83dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:text="And your score: "
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintStart_toEndOf="@+id/enterNames"
+        app:layout_constraintTop_toBottomOf="@+id/openingText" />
 
     <TextView
         android:id="@+id/underTEXT"
         android:layout_width="129dp"
         android:layout_height="48dp"
-        android:textAlignment="viewStart"
-        android:textSize="17sp"
+        android:layout_marginStart="30dp"
         android:background="#f0f0"
         android:text="Or, to sign as Guest, click here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAdder"
-        app:layout_constraintVertical_bias="0.659" />
+        android:textAlignment="viewStart"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAdder"
+        app:layout_constraintStart_toEndOf="@+id/buttonAdder"
+        app:layout_constraintTop_toTopOf="@+id/buttonAdder" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,71 +10,76 @@
         android:id="@+id/textViewOne"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="60dp"
         android:text="Soon to be Timer"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/timeCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/teal_700"
         android:text="Start Countdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewOne"
+        app:layout_constraintStart_toStartOf="@+id/textViewOne"
         app:layout_constraintTop_toBottomOf="@+id/textViewOne" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="167dp"
-        android:layout_marginEnd="192dp"
+        android:layout_marginTop="58dp"
         android:text="When you click to start the timer, you will have to click on as many buttons as possible"
-        app:layout_constraintBottom_toTopOf="@+id/textViewOne"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="729dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/navi_gator" />
+        app:navGraph="@navigation/navi_gator"
+        tools:layout_editor_absoluteY="10000dp" />
 
     <TextView
         android:id="@+id/viewForScores"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginBottom="12dp"
+        android:layout_height="23dp"
         android:text="Score : "
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/showPoints"
+        app:layout_constraintEnd_toStartOf="@+id/showPoints"
+        app:layout_constraintTop_toTopOf="@+id/showPoints"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/showPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="25dp"
         android:text="point"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/viewForScores"
-        app:layout_constraintTop_toTopOf="@+id/viewForScores" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

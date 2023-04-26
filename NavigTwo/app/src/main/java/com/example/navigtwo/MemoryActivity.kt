@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.navigtwo.Counter.FourthViewModel
 import com.example.navigtwo.Counter.SecondSharedModel
 import com.example.navigtwo.Counter.SharedViewModel
 import kotlinx.coroutines.launch
@@ -20,8 +21,9 @@ class MemoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val sharedVMtwo = ViewModelProvider(this).get(SharedViewModel::class.java)
-
         val secondSharedVM = ViewModelProvider(this).get(SecondSharedModel::class.java)
+        val fourthVM = ViewModelProvider(this).get(FourthViewModel::class.java)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memory)
 
@@ -38,7 +40,7 @@ class MemoryActivity : AppCompatActivity() {
         val entryOne: EditText = findViewById(R.id.editForInsertWord)
         val correctButton: Button = findViewById(R.id.btn_ForEntry)
 
-        val answers: ArrayList<String> = arrayListOf((""))
+
 
         //ViewModel LifeCycle
         lifecycleScope.launch {
@@ -55,11 +57,11 @@ class MemoryActivity : AppCompatActivity() {
 
 
             var whatFound: Int = 0
-            val ansIndex: Int = answers.size - 1
+            val ansIndex: Int = fourthVM.answers.size - 1
             var whatAnswer: Int = 2
 
             for(j in 0..ansIndex) {
-                if (answers[j] == inPut) {
+                if (fourthVM.answers[j] == inPut) {
                     println("You DO NOT GET POINTS FOR THE SAME WORD TWICE")
                     whatAnswer++
                     break
@@ -94,7 +96,7 @@ class MemoryActivity : AppCompatActivity() {
             if(rightOrWrong == 5){
                 secondSharedVM.secondIncrease()
             }
-            answers.add(userInText)
+            fourthVM.answers.add(userInText)
         }
 
         toNextPage.setOnClickListener{

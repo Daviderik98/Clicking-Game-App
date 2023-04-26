@@ -11,9 +11,11 @@ import android.content.Intent
 import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.navigtwo.Counter.SharedViewModel
+import com.example.navigtwo.Counter.TimerViewModel
 import kotlinx.coroutines.launch
 
 private lateinit var timing: CountDownTimer
@@ -24,10 +26,17 @@ class FunctionalityActivity : AppCompatActivity() {
         setContentView(R.layout.activity_functionality)
 
         val showPoints: TextView = findViewById(R.id.showPoints)
+        val txtView: TextView = findViewById(R.id.textViewOne)
+
+        val downcount: Button = findViewById(R.id.timeCountDown)
+        val scoreView: TextView = findViewById(R.id.viewForScores)
+        val otherText: TextView = findViewById(R.id.textView2)
 
         val sharedVM: SharedViewModel by viewModels()
+        val timerVM: TimerViewModel by viewModels()
 
-        //ViewModel LifeCycle
+        //ViewModel LifeCycle(s)
+        //Counting Score
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 sharedVM.currentState.collect() {
@@ -38,16 +47,38 @@ class FunctionalityActivity : AppCompatActivity() {
             }
         }
 
+        //Keeping track of timer
+        lifecycleScope.launch{
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                timerVM.timerValue.collect(){
+                    txtView.text = timerVM.timerValue.value.countingValue.toString()
+                }
+            }
+        }
+
+        //UI background Elements
+        lifecycleScope.launch{
+            repeatOnLifecycle(Lifecycle.State.STARTED)
+            {
+                sharedVM.visibleValue.collect() {
+                    if (sharedVM.visibleValue.value.timerOn) {
+                        downcount.isVisible = false
+                        scoreView.isVisible = true
+                        showPoints.isVisible = true
+                        sharedVM.isClickable = true
+                        otherText.text = ""
+                    }
+                }
+            }
+        }
+
         var finalScoreOne: String = "Fascinating"
 
         val finisher = Intent(this, MemoryActivity::class.java)
 
-        val txtView: TextView = findViewById(R.id.textViewOne)
-        val otherText: TextView = findViewById(R.id.textView2)
-        val downcount: Button = findViewById(R.id.timeCountDown)
-        var countdownValue: Int = 10
 
-        val scoreView: TextView = findViewById(R.id.viewForScores)
+
+
 
 
 
@@ -60,15 +91,19 @@ class FunctionalityActivity : AppCompatActivity() {
 
 
 
+
+
          timing = object : CountDownTimer(10_000, 1_000){
              //Open for calibration
             override fun onTick(remaining: Long) {
-                countdownValue--
-                downcount.isVisible = false
-                 scoreView.isVisible = true
-                 showPoints.isVisible = true
-                 sharedVM.isClickable = true
-                txtView.text = countdownValue.toString()
+                 // TODO - Repeat on lifecycle - ViewModel
+                 // TODO - countDownValue, should be a viewModel
+
+
+                timerVM.minusOne()
+                 sharedVM.switchVisible()
+
+                //txtView.text = countdownValue.toString()
             }
             override fun onFinish() {
                 println(scoreView.text.toString())
@@ -89,8 +124,7 @@ class FunctionalityActivity : AppCompatActivity() {
 
         downcount.setOnClickListener{
             sharedVM.isClickable = true//redundant, so I will fix this later
-            otherText.text = ""
-            countdownValue = 11
+
           timing.start()
 
         }

@@ -14,6 +14,18 @@ class SharedViewModel: ViewModel() {
 
     var isClickable: Boolean = false // Manipulate later, when it works
 
+    //Initialize the Timer and make it so other components turn invisible
+    private val visible = MutableStateFlow(TimerIsOn())
+    val visibleValue = visible.asStateFlow()
+
+    fun switchVisible(){
+        visible.update{
+            state -> state.copy(
+            timerOn = true
+            )
+        }
+    }
+
 
 
 
