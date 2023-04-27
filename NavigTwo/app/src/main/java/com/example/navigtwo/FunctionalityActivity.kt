@@ -77,21 +77,8 @@ class FunctionalityActivity : AppCompatActivity() {
         val finisher = Intent(this, MemoryActivity::class.java)
 
 
-
-
-
-
-
         scoreView.isVisible = false
         showPoints.isVisible = false
-
-
-
-
-
-
-
-
 
          timing = object : CountDownTimer(10_000, 1_000){
              //Open for calibration
@@ -119,7 +106,6 @@ class FunctionalityActivity : AppCompatActivity() {
                 startActivity(finisher)
             }
         }
-
 
 
         downcount.setOnClickListener{
